@@ -369,7 +369,11 @@ class MainWindow:
 
             excel_service.write_results(self.output_file_path.get(), results)
 
-            self.log(f"결과 저장 완료: {self.output_file_path.get()}")
+            # 실제 저장된 파일 경로
+            base_path = os.path.splitext(self.output_file_path.get())[0]
+            excel_path = base_path + '.xlsx'
+
+            self.log(f"Excel 저장 완료: {excel_path}")
             self.log("=" * 60)
             self.log(f"전체 작업 완료: (총 {len(results)}건 처리)")
             self.log("=" * 60)
@@ -379,7 +383,7 @@ class MainWindow:
                 "완료",
                 f"자동화가 완료되었습니다!\n\n"
                 f"처리 건수: {len(results)}건\n"
-                f"결과 파일: {self.output_file_path.get()}"
+                f"저장 위치: {excel_path}"
             )
 
         except Exception as e:

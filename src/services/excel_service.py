@@ -53,13 +53,13 @@ class ExcelService:
         """
         df = pd.DataFrame(results)
         
-        # 파일 확장자에 따라 저장
-        if file_path.endswith('.csv'):
-            df.to_csv(file_path, index=False, encoding='utf-8-sig')
-        else:
-            df.to_excel(file_path, index=False)
-        
-        print(f" Results saved to: {file_path}")
+        # 기본 경로
+        base_path = os.path.splitext(file_path)[0]
+
+        # Excel 저장
+        excel_path = base_path + '.xlsx'
+        df.to_excel(excel_path, index=False, engine='openpyxl')
+        print("Excel 저장: {excel_path}")
     
     @staticmethod
     def append_column(file_path, column_name, values, output_path=None):
