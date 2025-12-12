@@ -220,10 +220,10 @@ class MainWindow:
             self.input_file_path.set(file_path)
             self.log(f"입력 파일 선택: {file_path}")
             
-            # 출력 파일 자동 설정 (사용자가 지정하지 않은 경우)
+            # 출력 파일 자동 설정 
             if not self.output_file_path.get():
                 base, ext = os.path.splitext(file_path)
-                output_path = f"{base}_output.xlsx"  # 항상 .xlsx로 저장
+                output_path = f"{base}_output.xlsx" 
                 self.output_file_path.set(output_path)
                 self.log(f"출력 파일 자동 설정: {output_path}")
     
@@ -245,7 +245,7 @@ class MainWindow:
                 initial_file = "결과.xlsx"
         
         file_path = filedialog.asksaveasfilename(
-            title="결과 파일 저장 위치 및 이름 지정",
+            title="결과 파일 저장",
             initialdir=initial_dir,
             initialfile=initial_file,
             defaultextension=".xlsx",
